@@ -4,6 +4,7 @@ import CategoryItem from "../components/category-card"
 import { CategoryProps, ProductProps } from "../lib/types";
 import axios from "axios";
 import { LineWave } from "react-loader-spinner";
+import { baseUrl } from "../lib/constants";
 
 const Categories = () => {
     const [isLoading, setLoading] = useState(true);
@@ -15,7 +16,7 @@ const Categories = () => {
             try {
                 setLoading(true);
                 setError(false)
-                const response = await axios.get('http://localhost:5000/api/v1/category/ ',)
+                const response = await axios.get(`${baseUrl}/category/`,)
                 setCategories(response.data)
             } catch (err: unknown) {
                 console.log(err)

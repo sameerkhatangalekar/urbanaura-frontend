@@ -5,6 +5,7 @@ import { LineWave } from "react-loader-spinner"
 import { ProductProps } from "../lib/types"
 import toast from "react-hot-toast"
 import { Link } from "react-router-dom"
+import { baseUrl } from "../lib/constants"
 
 interface ProductListProps {
     sort: string,
@@ -26,7 +27,7 @@ const ProductList = ({ sort, filter, slice }: ProductListProps) => {
             try {
                 setLoading(true);
                 setError(false);
-                const response = await axios.get("http://localhost:5000/api/v1/product", {
+                const response = await axios.get(`${baseUrl}/product`, {
                     signal: controller.signal,
                     params: filter
                 });
@@ -86,10 +87,10 @@ const ProductList = ({ sort, filter, slice }: ProductListProps) => {
         );
     }
 
-    if (products.length === 0) {
+    if (!isLoading && products.length === 0) {
 
         return (<div className="p-5 grid items-center justify-center"  >
-            <h1 className="text-black text-3xl">Oops no products available for current filter!</h1>
+            <h1 className="text-black text-3xl">Oops no products available !</h1>
 
         </div>)
     }
