@@ -1,6 +1,7 @@
 import { CiShoppingCart } from "react-icons/ci"
 import { FaSearch } from "react-icons/fa"
 import Badge from "./badge"
+import toast from "react-hot-toast"
 
 const Navbar = () => {
     return (
@@ -24,7 +25,7 @@ const Navbar = () => {
                     <div className="text-base cursor-pointer max-sm:text-xs max-sm:ml-2.5">REGISTER</div>
                     <div className="text-base cursor-pointer max-sm:text-xs max-sm:ml-2.5">SIGN IN</div>
                     <div className="flex relative ">
-                        <CiShoppingCart className="max-sm:h-6 max-sm:w-6 h-8 w-8" />
+                        <CiShoppingCart className="max-sm:h-6 max-sm:w-6 h-8 w-8" onClick={() => toast.error('Clicked')} />
                         <Badge cartItemsCount={5} />
                     </div>
                 </div>

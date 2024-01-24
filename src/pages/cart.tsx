@@ -24,7 +24,10 @@ const Cart = () => {
                             <div className="p-5 flex flex-col justify-around">
                                 <span><b>Product:</b> JESSIE THUNDER SUITS</span>
                                 <span><b>ID:</b> 4577186787</span>
-                                <div className="rounded-full h-8 w-8 bg-amber-100 border border-black"></div>
+                                <div className="flex space-x-1">
+                                    <div className="rounded-full h-8 w-8 max-sm:h-4 max-sm:w-4 bg-amber-100 border border-black" />
+                                    <div className="rounded-full h-8 w-8 max-sm:h-4 max-sm:w-4 bg-red-300 border border-black"></div>
+                                </div>
                                 <span><b>Size:</b> M</span>
                                 <div className="max-sm:flex items-center justify-between hidden ">
                                     <div className="flex items-center">
