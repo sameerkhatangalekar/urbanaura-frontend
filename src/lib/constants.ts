@@ -9,3 +9,6 @@ export const usefulLinks =  [
     { name: "Wishlist" },
     { name: "Terms & Conditions" }
   ] as const;
+
+
+  export const baseUrl = 'http://localhost:5000/api/v1'

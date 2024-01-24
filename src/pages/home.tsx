@@ -13,7 +13,7 @@ const Home = () => {
             <Annoucement />
             <HeroSection />
             <Categories />
-            <ProductList sort={""} filter={{}} category={''} />
+            <ProductList sort={""} filter={{}} slice={4} />
             <Newsletter />
             <Footer />
         </main>

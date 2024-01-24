@@ -1,21 +1,21 @@
-import { popularProducts } from "../lib/dummy-data"
 import ProductCard from "../components/product-card"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { LineWave } from "react-loader-spinner"
-import toast from "react-hot-toast"
-import { MdError } from "react-icons/md"
 import { ProductProps } from "../lib/types"
+import toast from "react-hot-toast"
+import { Link } from "react-router-dom"
 
 interface ProductListProps {
     sort: string,
     filter: Object,
+    slice: number;
 
 }
 
 
 
-const ProductList = ({ sort, filter, }: ProductListProps) => {
+const ProductList = ({ sort, filter, slice }: ProductListProps) => {
     const [isLoading, setLoading] = useState(true);
     const [error, setError] = useState(true);
     const [products, setProducts] = useState<ProductProps[]>([])
@@ -24,7 +24,6 @@ const ProductList = ({ sort, filter, }: ProductListProps) => {
         const controller = new AbortController();
         ; (async () => {
             try {
-
                 setLoading(true);
                 setError(false);
                 const response = await axios.get("http://localhost:5000/api/v1/product", {
@@ -38,6 +37,7 @@ const ProductList = ({ sort, filter, }: ProductListProps) => {
                     return;
                 }
                 setError(true)
+                toast.error('Oops Something went wrong 😥')
                 console.log(error)
                 console.log(err)
 
@@ -65,16 +65,16 @@ const ProductList = ({ sort, filter, }: ProductListProps) => {
 
 
     if (error) {
-        return <h1 className="text-4xl font-bold text-center text-gray-400">Something went wrong !</h1>
+        return <h1 className="text-4xl font-bold text-center text-gray-400 py-3">Something went wrong !</h1>
     }
     if (isLoading) {
         return (
-            <div className="h-full w-full flex justify-center items-center">
+            <div className="h-16 w-full flex justify-center items-center mb-10">
                 <LineWave
                     visible={true}
                     height="100"
                     width="100"
-                    color="#4fa94d"
+                    color="#111827"
                     ariaLabel="line-wave-loading"
                     wrapperStyle={{}}
                     wrapperClass=""
@@ -86,13 +86,19 @@ const ProductList = ({ sort, filter, }: ProductListProps) => {
         );
     }
 
+    if (products.length === 0) {
 
+        return (<div className="p-5 grid items-center justify-center"  >
+            <h1 className="text-black text-3xl">Oops no products available for current filter!</h1>
+
+        </div>)
+    }
 
     return (
 
         <div className="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 min-w-min"  >
             {
-                products.map((product) => (<ProductCard key={product._id} {...product} />))
+                slice > 0 ? products.slice(0, slice).map((product) => (<Link to={`/product/${product._id}`} key={product._id}><ProductCard  {...product} /></Link>)) : products.map((product) => (<Link to={`/product/${product._id}`} key={product._id}><ProductCard  {...product} /></Link>))
             }
 
         </div>

@@ -11,3 +11,10 @@ export interface ProductProps {
     sizes: string[];
     colors: string[];
 }
+export interface CategoryProps {
+    _id:       string;
+    name:      string;
+    image:     string;
+    createdAt: Date;
+    updatedAt: Date;
+}

@@ -36,7 +36,8 @@ const HeroSection = () => {
                 transition={
                     {
                         duration: 1.5,
-                        ease: 'easeOut'
+                        ease: 'easeOut',
+
                     }
                 }
 
@@ -50,18 +51,6 @@ const HeroSection = () => {
                 }
 
             </motion.div>
-
-
-            {/* <div className="h-full flex transition duration-[600ms] ease-out" style={{ transform: `translateX(-${100 * currentIndex}vw)` }}>
-
-                {
-                    heroProducts.map((product, index) => (
-                        <Slide key={index} {...product} />
-                    ))
-
-                }
-
-            </div> */}
 
             <div onClick={() => handleClick("right")} className="rounded-full bg-gray-200  flex items-center justify-center bg-opacity-50 backdrop-blur-md mx-2 hover:scale-125 transition cursor-pointer p-2 absolute top-0 bottom-0 m-auto h-12 w-12 right-0 z-10">
                 <MdKeyboardArrowRight size={24} />
