@@ -1,4 +1,4 @@
-import { elegance, glamour, chic ,executive, hero1, hero2, hero3, product1, product2, product3, product4, product5, product6, product7,  } from "../assets/images";
+import {  hero1, hero2, hero3,   } from "../assets/images";
 
 export const heroProducts = [
     {
@@ -18,64 +18,8 @@ export const heroProducts = [
      }
   ] as const;
 
-  export const categoriesData = [
-    {
-      id: 1,
-      categoryName: "Chic Couture",
-      imageURL: chic
-    },
-    {
-      id: 2,
-      categoryName: "Elegant Ensembles",
-      imageURL: elegance
-    },
-    {
-      id: 3,
-      categoryName: "Active Glamour",
-      imageURL: glamour
-    },
-      {
-      id: 4,
-      categoryName: "Cultural Charm",
-      imageURL: executive
-    },
-  
-  ] as const;
 
 
-  export const popularProducts = [
-    {
-      id: 1,
-      
-      imageURL: product1
-    },
-    {
-      id: 2,
-     
-      imageURL: product2
-    },
-    {
-      id: 3,
-    
-      imageURL: product3
-    },
-      {
-      id: 4,
-      imageURL: product4
-    },
 
-    {
-      id: 5,
-      imageURL: product5,
-    },
-    {
-      id: 6,
-      imageURL: product6,
-    },
-    {
-      id: 7,
-      imageURL: product7,
-   }
-  
-  ] as const;
+
   

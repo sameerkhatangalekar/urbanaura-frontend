@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import CategoryItem from "../components/category-card"
 
-import { CategoryProps, ProductProps } from "../lib/types";
+import { CategoryProps } from "../lib/types";
 import axios from "axios";
 import { LineWave } from "react-loader-spinner";
 import { baseUrl } from "../lib/constants";
+import toast from "react-hot-toast";
 
 const Categories = () => {
     const [isLoading, setLoading] = useState(true);
@@ -12,15 +13,25 @@ const Categories = () => {
     const [categories, setCategories] = useState<CategoryProps[]>([])
 
     useEffect(() => {
+        const controller = new AbortController();
         ; (async () => {
             try {
                 setLoading(true);
                 setError(false)
-                const response = await axios.get(`${baseUrl}/category/`,)
+                const response = await axios.get(`${baseUrl}/category/`,
+                    {
+                        signal: controller.signal
+                    }
+                )
                 setCategories(response.data)
-            } catch (err: unknown) {
-                console.log(err)
+            } catch (error) {
+                if (axios.isCancel(error)) {
+                    console.log('Request canceled', error.message)
+                    return;
+                }
+                console.log(error)
                 setError(true)
+                toast.error('Oops Something went wrong 😥')
             }
             finally {
                 setLoading(false);
@@ -28,6 +39,8 @@ const Categories = () => {
 
 
         })();
+
+        return () => controller.abort();
     }, [])
 
 

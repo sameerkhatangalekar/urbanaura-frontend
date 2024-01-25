@@ -2,7 +2,7 @@
 
 const Register = () => {
     return (
-        <div className="flex  max-sm:justify-center items-center justify-start h-screen w-screen bg-[url('./assets/images/glamour.jpg')] bg-cover  max-xl:bg-center">
+        <div className="flex  max-sm:justify-center items-center justify-start h-screen w-screen bg-[url('./assets/images/register.jpg')] bg-cover  max-xl:bg-center">
 
 
             <div className="p-12 max-sm:w-[80%] w-[35%] bg-white rounded-md shadow-2xl max-sm:ml-0 ml-56 max-sm:p-10">

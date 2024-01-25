@@ -32,15 +32,13 @@ const ProductList = ({ sort, filter, slice }: ProductListProps) => {
                     params: filter
                 });
                 setProducts(response.data);
-            } catch (err) {
-                if (axios.isCancel(err)) {
-                    console.log('Request canceled', err.message)
+            } catch (error) {
+                if (axios.isCancel(error)) {
+                    console.log('Request canceled', error.message)
                     return;
                 }
                 setError(true)
                 toast.error('Oops Something went wrong 😥')
-                console.log(error)
-                console.log(err)
 
             }
             finally {
@@ -97,7 +95,8 @@ const ProductList = ({ sort, filter, slice }: ProductListProps) => {
 
     return (
 
-        <div className="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 min-w-min"  >
+        <div className="p-5 grid grid-cols-1
+         sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 auto-cols-max"  >
             {
                 slice > 0 ? products.slice(0, slice).map((product) => (<Link to={`/product/${product._id}`} key={product._id}><ProductCard  {...product} /></Link>)) : products.map((product) => (<Link to={`/product/${product._id}`} key={product._id}><ProductCard  {...product} /></Link>))
             }

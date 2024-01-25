@@ -11,4 +11,4 @@ export const usefulLinks =  [
   ] as const;
 
 
-  export const baseUrl = 'http://localhost:5000/api/v1'
+  export const baseUrl = 'http://192.168.1.5:5000/api/v1'
