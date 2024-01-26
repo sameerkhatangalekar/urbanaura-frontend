@@ -1,5 +1,5 @@
 import { IoIosAdd, IoIosRemove } from 'react-icons/io'
-import { CartItemProps } from '../redux/cartRedux'
+import { CartItemProps } from '../redux/cart-slice'
 
 const CartItem = ({ _id, title, size, price, productQuantity, images, color }: CartItemProps) => {
     return (

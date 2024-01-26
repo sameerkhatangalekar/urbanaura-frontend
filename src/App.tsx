@@ -1,7 +1,5 @@
 import { Toaster } from "react-hot-toast"
-import Annoucement from "./components/annoucement"
-import Footer from "./components/footer"
-import Navbar from "./components/navbar"
+
 import Cart from "./pages/cart"
 import Home from "./pages/home"
 import Login from "./pages/login"
@@ -15,44 +13,30 @@ import {
   Route,
   Navigate
 } from "react-router-dom";
+import { useAppSelector } from "./redux/redux-hooks"
+import Landing from "./pages/landing"
 
 
 function App() {
-  const user = false
+  const user = useAppSelector(state => state.user.currentUser)
 
   return (
     <>
       <Routes>
-
-        <Route path='/' element={<Home />} />
         <Route path='/login' element={user ? <Navigate replace to={"/"} /> : <Login />} />
         <Route path='/register' element={user ? <Navigate replace to={"/"} /> : <Register />} />
-
-        <Route path='/products'>
-          <Route index element={<Products />} />
-          <Route path='/products/:id/:categoryName' element={<Products />} />
+        <Route path='/' element={<Home />} >
+          <Route path='/' element={<Landing />} />
+          <Route path='/products'>
+            <Route index element={<Products />} />
+            <Route path='/products/:id/:categoryName' element={<Products />} />
+          </Route>
+          <Route path='/product/:id' element={<Product />} />
+          <Route path='/cart' element={<Cart />} />
         </Route>
-        <Route path='/product/:id' element={<Product />} />
-        <Route path='/cart' element={<Cart />} />
-
       </Routes>
       <Toaster />
     </>
-
-    // <>
-
-
-    //   <Navbar />
-    //   <Annoucement />
-    //   <Login />
-    //   <Register />
-    //   <Home />
-    //   <Products />
-    //   <Product />
-    //   <Cart />
-    //   <Newsletter />
-    //   <Footer />
-    // </>
   )
 }
 

@@ -7,7 +7,7 @@ import axios from "axios";
 import { baseUrl } from "../lib/constants";
 import { LineWave } from "react-loader-spinner";
 import toast from "react-hot-toast";
-import { addProduct } from "../redux/cartRedux";;
+import { addProduct } from "../redux/cart-slice";;
 import Navbar from "../components/navbar";
 import Annoucement from "../components/annoucement";
 import Newsletter from "../sections/news-letter";
@@ -113,8 +113,6 @@ const Product = () => {
 
     return (
         <>
-            <Navbar />
-            <Annoucement />
             <div className="p-12 flex max-sm:flex-col max-sm:p-2.5 max-sm:space-y-2">
                 <div className="flex-1 ">
                     <img src={product?.images[0]} alt="Product 1 " className="w-full h-[90vh] max-sm:h-[40vh] object-cover" />
@@ -163,8 +161,7 @@ const Product = () => {
                 </div>
 
             </div>
-            <Newsletter />
-            <Footer />
+
         </>
 
     )

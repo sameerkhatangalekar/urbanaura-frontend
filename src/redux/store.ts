@@ -1,13 +1,39 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { CartSlice } from "./cartRedux.ts";
+import { configureStore ,combineReducers} from "@reduxjs/toolkit";
+import { CartSlice } from "./cart-slice.ts";
+import { UserSlice } from "./user-slice.ts";
+import {
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+  } from 'redux-persist'
+  import storage from 'redux-persist/lib/storage'
+
+  const persistConfig = {
+    key: 'root',
+    version: 1,
+    storage,
+  }
+  
+  const rootReducer = combineReducers({user : UserSlice.reducer , cart : CartSlice.reducer})
 
 
-
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 const store = configureStore({
-    reducer : {
-        cart : CartSlice.reducer
-    }
+    reducer : persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 })
+
+export const persistor = persistStore(store)
 
 export type RootState = ReturnType<typeof store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}

@@ -18,3 +18,9 @@ export interface CategoryProps {
     createdAt: Date;
     updatedAt: Date;
 }
+
+export type ErrorObj = {
+    status: number;
+    message : string;
+    timestamp : string;
+}
