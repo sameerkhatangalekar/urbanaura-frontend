@@ -8,12 +8,12 @@ import { useAppSelector } from "../redux/redux-hooks";
 
 const Cart = () => {
     const cart = useAppSelector(state => state.cart);
-    const user = useAppSelector(state => state.user.currentUser);
+    const user = useAppSelector(state => state.user.isLoggedIn);
     return (
         <>
 
             {
-                user === null ? <div className="h-[50vh] flex items-center justify-center "><Link to={'/login'} className="underline">Login into your account</Link></div> : <div className="p-5 flex flex-col max-sm:p-2.5">
+                user === false ? <div className="h-[50vh] flex items-center justify-center "><Link to={'/login'} className="underline">Login into your account</Link></div> : <div className="p-5 flex flex-col max-sm:p-2.5">
                     <h1 className="font-light text-center text-3xl">YOUR BAG</h1>
                     <div className="flex items-center justify-between p-5 max-sm:space-x-2">
                         <button className="p-2.5 font-semibold cursor-pointer  bg-black text-white" >CONTINUE SHOPPING</button>

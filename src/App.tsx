@@ -18,7 +18,7 @@ import Landing from "./pages/landing"
 
 
 function App() {
-  const user = useAppSelector(state => state.user.currentUser)
+  const user = useAppSelector(state => state.user.isLoggedIn)
 
   return (
     <>

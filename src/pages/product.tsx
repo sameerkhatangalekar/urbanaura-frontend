@@ -8,10 +8,6 @@ import { baseUrl } from "../lib/constants";
 import { LineWave } from "react-loader-spinner";
 import toast from "react-hot-toast";
 import { addProduct } from "../redux/cart-slice";;
-import Navbar from "../components/navbar";
-import Annoucement from "../components/annoucement";
-import Newsletter from "../sections/news-letter";
-import Footer from "../components/footer";
 import { useAppDispatch } from "../redux/redux-hooks";
 
 

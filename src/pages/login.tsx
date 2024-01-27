@@ -1,8 +1,9 @@
 import { useFormik } from "formik";
 import * as Yup from 'yup'
-import { login } from "../redux/apiCalls";
+// import { login } from "../redux/apiCalls";
 import { useAppDispatch, useAppSelector } from "../redux/redux-hooks";
 import { Triangle } from "react-loader-spinner";
+import { login } from "../redux/user-slice";
 
 
 const Login = () => {
@@ -18,8 +19,7 @@ const Login = () => {
             password: Yup.string().min(4, 'Password should be of minimum 4 characters').max(12, 'Maximum password length is 12').required('Password is required')
         }),
         onSubmit: (values) => {
-
-            login(dispatch, values)
+            dispatch(login(values))
         }
 
     });

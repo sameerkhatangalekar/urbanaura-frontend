@@ -1,5 +1,5 @@
 import { CiShoppingCart } from "react-icons/ci"
-import { FaSearch } from "react-icons/fa"
+
 import Badge from "./badge"
 
 import { Link } from "react-router-dom"
@@ -12,7 +12,7 @@ import { logout } from "../redux/user-slice"
 
 const Navbar = () => {
     const cartQuantity = useAppSelector(state => state.cart.cartQuantity)
-    const user = useAppSelector(state => state.user.currentUser)
+    const user = useAppSelector(state => state.user.isLoggedIn)
     const dispatch = useAppDispatch();
 
     return (
@@ -32,7 +32,7 @@ const Navbar = () => {
                 </div>
                 {/* Right */}
                 {
-                    user === null ? <div className="max-sm:flex-[2]  flex-1 flex  max-sm:justify-end max-sm:space-x-1 justify-end items-center space-x-2 ">
+                    user === false ? <div className="max-sm:flex-[2]  flex-1 flex  max-sm:justify-end max-sm:space-x-1 justify-end items-center space-x-2 ">
                         <Link to={'/register'}>
                             <div className="text-base cursor-pointer max-sm:text-xs max-sm:ml-2.5">REGISTER</div>
                         </Link>

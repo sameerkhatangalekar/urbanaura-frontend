@@ -2,10 +2,6 @@ import { useParams } from "react-router-dom"
 
 import { useEffect, useState } from "react";
 import ProductList from "../sections/product-list";
-import Newsletter from "../sections/news-letter";
-import Footer from "../components/footer";
-import Annoucement from "../components/annoucement";
-import Navbar from "../components/navbar";
 
 const Products = () => {
     const { id } = useParams();
@@ -37,8 +33,6 @@ const Products = () => {
 
 
     return (
-
-
         <div className="h-full w-full relative ">
             <div className="bg-white sticky top-0 left-0 right-0 z-[10] border-b">
                 <h1 className="font-bold m-5 text-3xl">Dresses</h1>
@@ -79,8 +73,6 @@ const Products = () => {
             </div>
             <ProductList sort={sort} filter={filter} slice={0} />
         </div>
-
-
     )
 }
 
