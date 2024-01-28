@@ -7,7 +7,7 @@ import axios from "axios";
 import { baseUrl } from "../lib/constants";
 import { LineWave } from "react-loader-spinner";
 import toast from "react-hot-toast";
-import { addProduct } from "../redux/cart-slice";;
+import { addProductToCart } from "../redux/slices/cart-slice";;
 import { useAppDispatch } from "../redux/redux-hooks";
 
 
@@ -40,9 +40,11 @@ const Product = () => {
     const handleClick = () => {
 
         if (product && color && size) {
-            dispatch(addProduct({
-                ...product, color: color!, productQuantity: quantity,
-                size: size
+            dispatch(addProductToCart({
+                product: product._id,
+                quantity: quantity,
+                size: size,
+                color: color
             }));
         }
 

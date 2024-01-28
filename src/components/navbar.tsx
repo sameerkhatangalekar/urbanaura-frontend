@@ -1,22 +1,21 @@
 import { CiShoppingCart } from "react-icons/ci"
-
 import Badge from "./badge"
-
 import { Link } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../redux/redux-hooks"
 import { Menu, Transition } from "@headlessui/react"
 import { Fragment } from "react"
 import { MdAccountCircle } from "react-icons/md"
 import { IoIosLogOut } from "react-icons/io"
-import { logout } from "../redux/user-slice"
+import { logout } from "../redux/slices/user-slice"
 
 const Navbar = () => {
-    const cartQuantity = useAppSelector(state => state.cart.cartQuantity)
+    const cartQuantity = useAppSelector(state => state.cart.cart.cartQuantity)
+
     const user = useAppSelector(state => state.user.isLoggedIn)
     const dispatch = useAppDispatch();
 
     return (
-        <header className="h-16 w-full max-sm:h-[50px]">
+        <header className="h-16 w-full max-sm:h-[50px] sticky  top-0 left-0 right-0 z-[10] bg-white">
             <nav className="flex max-sm:px-1 px-5 py-3 justify-center items-center">
                 {/* Left */}
                 <div className="flex-[1] flex  items-center justify-start ">
@@ -74,7 +73,9 @@ const Navbar = () => {
                                             {({ active }) => (
 
                                                 <div className={`${active ? 'bg-teal-500 text-white' : 'text-gray-900'
-                                                    } group flex w-full items-center rounded-md px-2 py-2 text-sm justify-between`} onClick={() => dispatch(logout())}>
+                                                    } group flex w-full items-center rounded-md px-2 py-2 text-sm justify-between`} onClick={() => {
+                                                        dispatch(logout())
+                                                    }}>
                                                     Logout
                                                     <IoIosLogOut />
                                                 </div>

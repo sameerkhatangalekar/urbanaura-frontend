@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 // import { login } from "../redux/apiCalls";
 import { useAppDispatch, useAppSelector } from "../redux/redux-hooks";
 import { Triangle } from "react-loader-spinner";
-import { login } from "../redux/user-slice";
+import { login } from "../redux/slices/user-slice";
 
 
 const Login = () => {

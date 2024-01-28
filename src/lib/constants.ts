@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const usefulLinks =  [
     { name: "Home" },
     { name: "Cart" },
@@ -13,22 +15,15 @@ export const usefulLinks =  [
 
   export const baseUrl = 'http://localhost:5000/api/v1'
 
-//   import axios from "axios";
 
-// const BASE_URL = "http://localhost:5000/api/";
-// const TOKEN =
-//   JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
-//     .accessToken || "";
+  export const publicRequestInstance = axios.create({
+    withCredentials: true,
+    baseURL: baseUrl
+  });
 
-// const user = JSON.parse(localStorage.getItem("persist:root"))?.user;
-// const currentUser = user && JSON.parse(user).currentUser;
-// const TOKEN = currentUser?.accessToken;
 
-// export const publicRequest = axios.create({
-//   baseURL: BASE_URL,
-// });
+  export const privateRequestInstance = axios.create({
+    withCredentials: true,
+    baseURL: baseUrl
+ });
 
-// export const userRequest = axios.create({
-//   baseURL: BASE_URL,
-//   headers: { Authorization :  `Bearer ${TOKEN}` },
-// });

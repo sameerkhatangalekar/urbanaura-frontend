@@ -15,6 +15,8 @@ import {
 } from "react-router-dom";
 import { useAppSelector } from "./redux/redux-hooks"
 import Landing from "./pages/landing"
+import PaymentSuccess from "./pages/payment-success"
+import Orders from "./pages/orders"
 
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
           </Route>
           <Route path='/product/:id' element={<Product />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/success' element={<PaymentSuccess />} />
+          <Route path='/orders' element={<Orders />} />
         </Route>
       </Routes>
       <Toaster />
