@@ -1,9 +1,9 @@
 import { useFormik } from "formik";
 import * as Yup from 'yup'
-// import { login } from "../redux/apiCalls";
 import { useAppDispatch, useAppSelector } from "../redux/redux-hooks";
 import { Triangle } from "react-loader-spinner";
 import { login } from "../redux/slices/user-slice";
+import { Link } from "react-router-dom";
 
 
 const Login = () => {
@@ -51,9 +51,13 @@ const Login = () => {
                     <a href="" className="my-2 text-xs underline cursor-pointer">
                         FORGOT PASSWORD?
                     </a>
-                    <a href="" className="my-2 text-xs underline cursor-pointer">
-                        CREATE A NEW ACCOUNT
-                    </a>
+
+                    <Link replace to={'/register'} >
+                        <span className="my-2 text-xs underline cursor-pointer">
+                            CREATE A NEW ACCOUNT
+                        </span>
+                    </Link>
+
                 </form>
             </div>
 

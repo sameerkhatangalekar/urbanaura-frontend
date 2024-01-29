@@ -12,7 +12,7 @@ import { resetUserState } from "./user-slice";
 //
 //   const order = Convert.toOrder(json);
 
-export type Order = {
+export type OrderProps = {
     user:        User;
     _id:         string;
     status:      string;
@@ -24,7 +24,7 @@ export type Order = {
     updatedAt:   Date;
 }
 
- type ProductElement = {
+ export type ProductElement = {
     product:    Product;
     quantity:   number;
     size:       string;
@@ -58,7 +58,7 @@ export type Order = {
 
 type OrderState = {
     isFetching : Boolean;
-    orders : Order[];
+    orders : OrderProps[];
     error : Boolean;
 }
 
@@ -117,7 +117,7 @@ export const OrdersSlice = createSlice({
             state.isFetching = false
             state.error = true
         });
-        builder.addCase(getOrders.fulfilled,(state,action : PayloadAction<Order[]>)=>{
+        builder.addCase(getOrders.fulfilled,(state,action : PayloadAction<OrderProps[]>)=>{
             state.isFetching = false
             state.error = false
             state.orders = action.payload

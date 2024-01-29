@@ -1,8 +1,24 @@
+import { useEffect } from 'react'
 import Categories from '../sections/categories'
 import HeroSection from '../sections/hero-section'
 import ProductList from '../sections/product-list'
+import { useAppDispatch, useAppSelector } from '../redux/redux-hooks'
+import { getCart } from '../redux/slices/cart-slice'
 
 const Landing = () => {
+    const user = useAppSelector(state => state.user.isLoggedIn);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if (user) {
+            const getCartCall = dispatch(getCart());
+
+            return () => getCartCall.abort();
+        }
+
+
+    }, [])
+
     return (
         <>
             <HeroSection />

@@ -4,9 +4,10 @@ import { Link } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../redux/redux-hooks"
 import { Menu, Transition } from "@headlessui/react"
 import { Fragment } from "react"
-import { MdAccountCircle } from "react-icons/md"
 import { IoIosLogOut } from "react-icons/io"
 import { logout } from "../redux/slices/user-slice"
+import { TfiPackage } from "react-icons/tfi"
+import { VscAccount } from "react-icons/vsc"
 
 const Navbar = () => {
     const cartQuantity = useAppSelector(state => state.cart.cart.cartQuantity)
@@ -15,10 +16,10 @@ const Navbar = () => {
     const dispatch = useAppDispatch();
 
     return (
-        <header className="h-16 w-full max-sm:h-[50px] sticky  top-0 left-0 right-0 z-[10] bg-white">
+        <header className="h-16 w-full max-sm:h-[50px] sticky  top-0 left-0 right-0 z-[20] bg-white">
             <nav className="flex max-sm:px-1 px-5 py-3 justify-center items-center">
                 {/* Left */}
-                <div className="flex-[1] flex  items-center justify-start ">
+                <div className="flex-[1] flex max-sm:hidden">
                     {/* <span className="text-base cursor-pointer max-sm:hidden">EN</span>
                     <div className="flex items-center justify-between border-[1px] border-solid border-gray-300 ml-6 p-[5px] rounded-md space-x-1 max-sm:ml-0">
                         <input type="text" className="outline-none max-sm:w-12" placeholder="Search" />
@@ -26,7 +27,7 @@ const Navbar = () => {
                     </div> */}
                 </div>
                 {/* Center */}
-                <div className="flex-[2] text-center">
+                <div className="flex-[2] text-center max-sm:text-start  max-sm:px-3">
                     <Link to={'/'} ><h1 className="font-bold text-3xl max-sm:text-2xl">UrbanAura</h1></Link>
                 </div>
                 {/* Right */}
@@ -50,11 +51,11 @@ const Navbar = () => {
                             </div>
                         </Link>
 
-                    </div> : <div className="max-sm:flex-[1]  flex-1 flex  max-sm:justify-end max-sm:space-x-1 justify-end items-center space-x-2 ">
+                    </div> : <div className="max-sm:flex-[1]  flex-1 flex  max-sm:justify-end max-sm:space-x-2 justify-end items-center space-x-2 ">
                         <Menu as="div" className="relative inline-block text-left">
                             <div>
                                 <Menu.Button className="rounded-full flex items-center">
-                                    <MdAccountCircle className="max-sm:h-6 max-sm:w-6 h-8 w-8" />
+                                    <VscAccount className="max-sm:h-4 max-sm:w-4 h-7 w-7" />
 
                                 </Menu.Button>
                             </div>
@@ -88,6 +89,11 @@ const Navbar = () => {
                                 </Menu.Items>
                             </Transition>
                         </Menu>
+
+                        <Link to={'/orders'}>
+                            <TfiPackage className="max-sm:h-4 max-sm:w-4 h-6 w-6" />
+                        </Link>
+
 
                         <Link to={'/cart'}>
                             <div className="flex relative">

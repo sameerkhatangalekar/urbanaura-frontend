@@ -24,6 +24,7 @@ export const addProductToCart = createAsyncThunk('addProductToCart',async (produ
             signal : signal,
             withCredentials : true
         });
+        toast.success(response.data.message);
         dispatch(getCart())
         return response.data;
     } catch (error : unknown) {
@@ -57,6 +58,7 @@ export const removeProductToCart = createAsyncThunk('removeProductToCart',async 
             signal : signal,
             withCredentials : true
         });
+        toast.success(response.data.message);
         dispatch(getCart())
         return response.data;
     } catch (error : unknown) {

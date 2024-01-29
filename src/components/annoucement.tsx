@@ -2,7 +2,7 @@
 
 const Annoucement = () => {
     return (
-        <div className="flex h-8 bg-teal-700  text-white text-center items-center justify-center">
+        <div className="flex h-8 bg-teal-700 text-white text-center items-center justify-center ">
             Super Deal! Free Shipping on Orders Over $50
         </div>
     )

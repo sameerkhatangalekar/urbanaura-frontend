@@ -10,7 +10,7 @@ const CartItem = ({ product, size, color, quantity, _id }: CartItemProps) => {
                 <img src={product.images[0]} alt="" className=" max-sm:w-24 max-sm:h-auto  w-56 h-56 object-cover rounded-xl p-1" />
                 <div className="max-sm:p-1 p-5 flex flex-col justify-around">
                     <span className='max-sm:text-sm'><b>Product:</b> {product.title}</span>
-                    <span className='max-sm:text-sm truncate'><b>ID:</b> {product._id}</span>
+                    <span className='max-sm:text-sm'><b>ID:</b> {product._id}</span>
                     <span className='max-sm:text-sm'><b>Color:</b> {color}</span>
 
                     <span className='max-sm:text-sm'><b>Size:</b> {size}</span>
@@ -30,7 +30,7 @@ const CartItem = ({ product, size, color, quantity, _id }: CartItemProps) => {
                 </div>
             </div>
 
-            <div className='absolute right-3 top-3 max-sm:top-1 max-sm:right-1'>
+            <div className='absolute right-3 top-3 max-sm:top-1 max-sm:right-1 bg-white '>
                 <CiCircleRemove size={24} onClick={() => { dispatch(removeProductToCart(_id)) }} />
             </div>
         </div>

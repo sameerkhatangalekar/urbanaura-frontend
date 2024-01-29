@@ -4,7 +4,7 @@ import Footer from "../components/footer"
 import Navbar from "../components/navbar"
 import Newsletter from "../sections/news-letter"
 
-const Home = () => {
+const Layout = () => {
     return (
         <main >
             <Navbar />
@@ -16,4 +16,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Layout

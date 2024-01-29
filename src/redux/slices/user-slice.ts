@@ -10,6 +10,8 @@ export const logout = createAsyncThunk("logout", async (_,{rejectWithValue,dispa
         const response = await privateRequestInstance.put('/auth/logout');
         dispatch(resetUserState())
         dispatch(resetCartState())
+
+        toast.success(response.data.message)
         return response.data;
     } catch (error : unknown) {
        if(axios.isAxiosError(error))
@@ -35,7 +37,7 @@ export const logout = createAsyncThunk("logout", async (_,{rejectWithValue,dispa
 export const login = createAsyncThunk("login", async (user : { email : string, password : string},{rejectWithValue})=>{
     try {
         const response = await privateRequestInstance.post('/auth/login',user);
-        
+        toast.success('Logged-in successfully!')
         return response.data;
     } catch (error : unknown) {
        if(axios.isAxiosError(error))
@@ -56,6 +58,33 @@ export const login = createAsyncThunk("login", async (user : { email : string, p
      
     }
 })
+
+
+export const register = createAsyncThunk("register", async (user : {firstName : string, lastName : string ,contact : string , email : string, password : string},{rejectWithValue})=>{
+    try {
+        const response = await privateRequestInstance.post('/auth/register',user);
+        toast.success(response.data.message);
+        return response.data;
+    } catch (error : unknown) {
+       if(axios.isAxiosError(error))
+       {
+        if( error.response)
+        {
+             const errObj = error.response.data as ErrorObj;
+             toast.error(errObj.message);
+            return rejectWithValue(errObj.message)
+            }
+    
+       }
+       else {
+        toast.error('Something went wrong 😥')
+        console.log(error);
+        return rejectWithValue('Something went wrong 😥')
+       }
+     
+    }
+})
+
 
 
 
@@ -99,6 +128,22 @@ export const UserSlice = createSlice({
         });
 
         builder.addCase(login.rejected,(state) =>{
+            state.isFetching = false;
+            state.error = true;
+        });
+
+        builder.addCase(register.fulfilled,(state) =>{
+            state.isFetching = false;
+            state.error  = false;
+    
+        });
+
+        builder.addCase(register.pending,(state) =>{
+            state.isFetching = true;
+            state.error = false;
+        });
+
+        builder.addCase(register.rejected,(state) =>{
             state.isFetching = false;
             state.error = true;
         });
