@@ -18,6 +18,9 @@ import PaymentSuccess from "./pages/payment-success"
 import Orders from "./pages/orders"
 import Layout from "./pages/layout"
 import Order from "./pages/order"
+import Otp from "./pages/otp"
+import ForgotPassword from "./pages/forgot-password"
+import ResetPassword from "./pages/reset-password"
 
 
 function App() {
@@ -28,7 +31,10 @@ function App() {
       <Routes>
         <Route path='/login' element={user ? <Navigate replace to={"/"} /> : <Login />} />
         <Route path='/register' element={user ? <Navigate replace to={"/"} /> : <Register />} />
-        <Route path='/success' element={<PaymentSuccess />} />
+        <Route path='/forgot' element={<ForgotPassword />} />
+        <Route path='/reset' element={<ResetPassword />} />
+        <Route path='/otp' element={<Otp />} />
+        <Route path='/success' element={user ? <Navigate replace to={"/"} /> : <PaymentSuccess />} />
         <Route path='/' element={<Layout />} >
           <Route path='/' element={<Landing />} />
           <Route path='/products'>

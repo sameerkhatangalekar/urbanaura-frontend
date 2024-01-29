@@ -48,9 +48,12 @@ const Login = () => {
                         wrapperStyle={{}}
                         wrapperClass=""
                     /> : 'LOGIN'}</button>
-                    <a href="" className="my-2 text-xs underline cursor-pointer">
-                        FORGOT PASSWORD?
-                    </a>
+
+                    <Link replace to={'/forgot'} >
+                        <span className="my-2 text-xs underline cursor-pointer">
+                            FORGOT PASSWORD?
+                        </span>
+                    </Link>
 
                     <Link replace to={'/register'} >
                         <span className="my-2 text-xs underline cursor-pointer">
