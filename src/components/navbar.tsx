@@ -16,7 +16,7 @@ const Navbar = () => {
     const dispatch = useAppDispatch();
 
     return (
-        <header className="h-16 w-full max-sm:h-[50px] sticky  top-0 left-0 right-0 z-[20] bg-white">
+        <header className="h-16 w-full max-sm:h-[50px] sticky  top-0 left-0 right-0 z-[20] bg-white " autoFocus>
             <nav className="flex max-sm:px-1 px-5 py-3 justify-center items-center">
                 {/* Left */}
                 <div className="flex-[1] flex max-sm:hidden">

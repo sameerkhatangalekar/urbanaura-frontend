@@ -4,6 +4,7 @@ import Footer from "../components/footer"
 import Navbar from "../components/navbar"
 import Newsletter from "../sections/news-letter"
 
+
 const Layout = () => {
     return (
         <main >

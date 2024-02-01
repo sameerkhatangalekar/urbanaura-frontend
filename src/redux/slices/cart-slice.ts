@@ -20,7 +20,7 @@ type AddProductToCartProps = {
 
 export const addProductToCart = createAsyncThunk('addProductToCart',async (product : AddProductToCartProps,{dispatch,signal,rejectWithValue},) =>{
     try {
-        const response = await privateRequestInstance.post(`/cart/`,product,{
+        const response = await privateRequestInstance.post(`/cart/secured`,product,{
             signal : signal,
             withCredentials : true
         });
@@ -54,7 +54,7 @@ export const addProductToCart = createAsyncThunk('addProductToCart',async (produ
 
 export const removeProductToCart = createAsyncThunk('removeProductToCart',async (cartItemId : string,{dispatch,signal,rejectWithValue},) =>{
     try {
-        const response = await privateRequestInstance.delete(`/cart/${cartItemId}`,{
+        const response = await privateRequestInstance.delete(`/cart/secured/${cartItemId}`,{
             signal : signal,
             withCredentials : true
         });
@@ -87,7 +87,7 @@ export const removeProductToCart = createAsyncThunk('removeProductToCart',async 
 
 export const checkout =  createAsyncThunk('checkout',async (_,{dispatch,rejectWithValue},) =>{
     try {
-        const response = await privateRequestInstance.get(`/checkout/`,{
+        const response = await privateRequestInstance.get(`/checkout/secured`,{
             withCredentials : true
         });
         
@@ -120,7 +120,7 @@ export const checkout =  createAsyncThunk('checkout',async (_,{dispatch,rejectWi
 
 export const getCart = createAsyncThunk('getCart',async (_,{signal,rejectWithValue,dispatch}) =>{
     try {
-        const response = await privateRequestInstance.get(`/cart/`,{
+        const response = await privateRequestInstance.get(`/cart/secured/`,{
             withCredentials : true,
             signal : signal
         });

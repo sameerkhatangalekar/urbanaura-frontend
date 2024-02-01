@@ -63,7 +63,7 @@ const Cart = () => {
             </div>
 
             <div className="flex justify-between space-x-1 max-sm:flex-col max-sm:space-y-1 max-sm:space-x-0">
-                <div className="flex-[3] p-5 max-sm:p-2.5 border rounded-md bg-slate-50  h-[60vh] overflow-y-scroll">
+                <div className="flex-[3] p-5 max-sm:p-2.5 border rounded-md bg-slate-50  h-[60vh] overflow-y-scroll space-y-2">
                     {
                         cart.cart.cartQuantity === 0 ? <h1 className="text-4xl font-bold text-center text-gray-900">Cart is empty </h1> : cart.cart.products.map((product) => (<CartItem key={product._id} {...product} />))
                     }

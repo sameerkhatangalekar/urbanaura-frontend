@@ -71,7 +71,7 @@ const initialState : OrderState =
 
 export const getOrders = createAsyncThunk('getOrders', async (_,{signal,rejectWithValue,dispatch})=>{
  try {
-        const response = await privateRequestInstance.get(`/order/my-orders/`,{
+        const response = await privateRequestInstance.get(`/order/secured/my-orders/`,{
             withCredentials : true,
             signal : signal
         });

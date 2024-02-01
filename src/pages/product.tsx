@@ -2,17 +2,18 @@ import { IoIosAdd, IoIosRemove } from "react-icons/io"
 
 import { useEffect, useState } from "react"
 import { ProductProps } from "../lib/types";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { baseUrl } from "../lib/constants";
 import { LineWave } from "react-loader-spinner";
 import toast from "react-hot-toast";
 import { addProductToCart } from "../redux/slices/cart-slice";;
-import { useAppDispatch } from "../redux/redux-hooks";
+import { useAppDispatch, useAppSelector } from "../redux/redux-hooks";
 
 
 const Product = () => {
-
+    const user = useAppSelector(state => state.user.isLoggedIn);
+    const navigate = useNavigate();
     const { id } = useParams();
     const [isLoading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -38,8 +39,11 @@ const Product = () => {
     }
 
     const handleClick = () => {
-
-        if (product && color && size) {
+        if (!user) {
+            navigate('/login', {
+                replace: true
+            })
+        } else if (product && color && size) {
             dispatch(addProductToCart({
                 product: product._id,
                 quantity: quantity,
