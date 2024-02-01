@@ -13,8 +13,8 @@ export const usefulLinks =  [
   ] as const;
 
 
-  export const baseUrl = 'https://urban-aura-backend.onrender.com/api/v1'
-
+  // export const baseUrl = 'https://urban-aura-backend.onrender.com/api/v1'
+  export const baseUrl = 'http://localhost:5000/api/v1'
 
   export const publicRequestInstance = axios.create({
     withCredentials: true,

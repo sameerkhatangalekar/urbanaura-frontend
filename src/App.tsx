@@ -34,7 +34,7 @@ function App() {
         <Route path='/forgot' element={<ForgotPassword />} />
         <Route path='/reset' element={<ResetPassword />} />
         <Route path='/otp' element={<Otp />} />
-        <Route path='/success' element={user ? <Navigate replace to={"/"} /> : <PaymentSuccess />} />
+        <Route path='/success' element={user ? <PaymentSuccess /> : <Navigate replace to={"/"} />} />
         <Route path='/' element={<Layout />} >
           <Route path='/' element={<Landing />} />
           <Route path='/products'>
