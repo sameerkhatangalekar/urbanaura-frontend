@@ -4,6 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { privateRequestInstance } from "../../lib/constants";
 import { resetUserState } from "./user-slice";
+import { resetOrderState } from "./order-slice";
 
 
 
@@ -36,6 +37,7 @@ export const addProductToCart = createAsyncThunk('addProductToCart',async (produ
                 {
                  dispatch(resetCartState())   
                  dispatch(resetUserState())   
+                 dispatch(resetOrderState()) 
                 }
               const errObj = error.response.data as ErrorObj;
               toast.error(errObj.message);
@@ -70,6 +72,7 @@ export const removeProductToCart = createAsyncThunk('removeProductToCart',async 
                 {
                  dispatch(resetCartState())   
                  dispatch(resetUserState())   
+                 dispatch(resetOrderState()) 
                 }
               const errObj = error.response.data as ErrorObj;
               toast.error(errObj.message);
@@ -102,7 +105,8 @@ export const checkout =  createAsyncThunk('checkout',async (_,{dispatch,rejectWi
                 if( error.response.status === 401)
                 {
                  dispatch(resetCartState())   
-                 dispatch(resetUserState())   
+                 dispatch(resetUserState()) 
+                 dispatch(resetOrderState())   
                 }
               const errObj = error.response.data as ErrorObj;
               toast.error(errObj.message);
@@ -137,6 +141,7 @@ export const getCart = createAsyncThunk('getCart',async (_,{signal,rejectWithVal
                 {
                  dispatch(resetCartState())   
                  dispatch(resetUserState())   
+                 dispatch(resetOrderState()) 
                 }
               const errObj = error.response.data as ErrorObj;
               toast.error(errObj.message);

@@ -87,6 +87,7 @@ export const getOrders = createAsyncThunk('getOrders', async (_,{signal,rejectWi
                 {
                  dispatch(resetCartState())   
                  dispatch(resetUserState())   
+                 dispatch(resetOrderState()) 
                 }
               const errObj = error.response.data as ErrorObj;
               toast.error(errObj.message);
@@ -102,12 +103,55 @@ export const getOrders = createAsyncThunk('getOrders', async (_,{signal,rejectWi
 })
 
 
+export const cancelOrder = createAsyncThunk('cancelOrder', async (id : string,{signal,rejectWithValue,dispatch})=>{
+    try {
+           const response = await privateRequestInstance.put(`/order/secured/cancel/${id}`,{
+               withCredentials : true,
+               signal : signal
+           });
+           
+       return response.data;
+       } catch (error : unknown) {
+           
+           if(axios.isAxiosError(error))
+           {
+           
+               if( error.response)
+               {
+                   if( error.response.status === 401)
+                   {
+                    dispatch(resetCartState())   
+                    dispatch(resetUserState())   
+                    dispatch(resetOrderState()) 
+                   }
+                 const errObj = error.response.data as ErrorObj;
+                 toast.error(errObj.message);
+                 return rejectWithValue(errObj.message)
+               }
+           }
+           else {
+            toast.error('Something went wrong 😥')
+            console.log(error);
+            return rejectWithValue('Something went wrong 😥')
+           } 
+       }
+   })
+
+
 
 
 export const OrdersSlice = createSlice({
     name  : 'orders',
     initialState : initialState,
-    reducers : {},
+    reducers : {
+        resetOrderState : (state)=> {
+            state.orders = initialState.orders;
+            state.isFetching = initialState.isFetching;
+            state.error = initialState.error;
+         
+    }
+
+    },
     extraReducers  (builder) {
         builder.addCase(getOrders.pending,(state)=>{
             state.isFetching = true
@@ -127,3 +171,4 @@ export const OrdersSlice = createSlice({
 })
 
 export default OrdersSlice.reducer;
+export const { resetOrderState} = OrdersSlice.actions;

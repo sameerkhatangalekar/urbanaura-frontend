@@ -1,11 +1,13 @@
-import { useParams } from "react-router-dom";
-import { useAppSelector } from "../redux/redux-hooks";
-import { ProductElement } from "../redux/slices/order-slice";
+import { useNavigate, useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../redux/redux-hooks";
+import { ProductElement, cancelOrder } from "../redux/slices/order-slice";
 
 
 
 const Order = () => {
     const orders = useAppSelector(state => state.orders);
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const { id } = useParams();
     const order = orders.orders.find((item) => item._id === id);
     return (
@@ -72,7 +74,6 @@ const Order = () => {
                     <div className="border mb-1"></div>
                     <h1 className="text-xl font-bold">Shipping</h1>
                     <div className="flex flex-col text-md">
-
                         <span>{order!.shipping.line1}</span>
                         <span>{order!.shipping.line2}</span>
                         <span>{order!.shipping.city}</span>
@@ -80,8 +81,9 @@ const Order = () => {
                         <span>{order!.shipping.state}</span>
                         <span>{order!.shipping.country}</span>
                     </div>
-
-
+                    {
+                        order?.status === 'pending' ? <button type="submit" className="bg-teal-700 text-white py-3 px-5 mt-5 select-none" onClick={() => dispatch(cancelOrder(order._id)).then(() => navigate('/orders'))}>Cancel Order</button> : null
+                    }
                 </div>
             </div>
         </div>

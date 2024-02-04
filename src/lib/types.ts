@@ -4,7 +4,7 @@ export interface ProductProps {
     title: string;
     description: string;
     images: string[];
-    categories: string[];
+    categories: Omit<CategoryProps,'image' | 'createdAt' | 'updatedAt'>[];
     price: number;
     createdAt: Date;
     updatedAt: Date;

@@ -4,13 +4,14 @@ import toast from "react-hot-toast";
 import {  privateRequestInstance } from "../../lib/constants";
 import { ErrorObj } from "../../lib/types";
 import { resetCartState } from "./cart-slice";
+import { resetOrderState } from "./order-slice";
 
 export const logout = createAsyncThunk("logout", async (_,{rejectWithValue,dispatch})=>{
     try {
         const response = await privateRequestInstance.put('/auth/logout');
         dispatch(resetUserState())
         dispatch(resetCartState())
-
+        dispatch(resetOrderState()) 
         toast.success(response.data.message)
         return response.data;
     } catch (error : unknown) {

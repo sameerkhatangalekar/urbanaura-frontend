@@ -45,7 +45,7 @@ const Cart = () => {
 
                 <div className="max-sm:hidden">
                     <span className="underline cursor-pointer mx-2.5">Shopping Bag ({cart.cart.cartQuantity})</span>
-                    <span className="underline cursor-pointer mx-2.5">Yout wishlist (0)</span>
+
                 </div>
 
                 <button className="p-2.5 font-semibold cursor-pointer bg-black text-white" disabled={cart.cart.cartQuantity <= 0 || cart.isCheckingout === true} onClick={() => dispatch(checkout())}> {
@@ -63,9 +63,9 @@ const Cart = () => {
             </div>
 
             <div className="flex justify-between space-x-1 max-sm:flex-col max-sm:space-y-1 max-sm:space-x-0">
-                <div className="flex-[3] p-5 max-sm:p-2.5 border rounded-md bg-slate-50  h-[60vh] overflow-y-scroll space-y-2">
+                <div className="flex-[3] p-5 max-sm:p-2.5 border rounded-md bg-slate-50  h-[70vh] overflow-y-scroll">
                     {
-                        cart.cart.cartQuantity === 0 ? <h1 className="text-4xl font-bold text-center text-gray-900">Cart is empty </h1> : cart.cart.products.map((product) => (<CartItem key={product._id} {...product} />))
+                        cart.cart.cartQuantity === 0 ? <h1 className="text-4xl font-bold text-center text-gray-900">Cart is empty </h1> : cart.cart.products.map((product) => (<Link to={`/product/${product.product._id}`}><CartItem key={product._id} {...product} /></Link>))
                     }
 
                 </div>

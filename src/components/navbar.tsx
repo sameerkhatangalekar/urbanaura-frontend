@@ -18,26 +18,22 @@ const Navbar = () => {
     return (
         <header className="h-16 w-full max-sm:h-[50px] sticky  top-0 left-0 right-0 z-[20] bg-white " autoFocus>
             <nav className="flex max-sm:px-1 px-5 py-3 justify-center items-center">
-                {/* Left */}
+
                 <div className="flex-[1] flex max-sm:hidden">
-                    {/* <span className="text-base cursor-pointer max-sm:hidden">EN</span>
-                    <div className="flex items-center justify-between border-[1px] border-solid border-gray-300 ml-6 p-[5px] rounded-md space-x-1 max-sm:ml-0">
-                        <input type="text" className="outline-none max-sm:w-12" placeholder="Search" />
-                        <FaSearch color="gray" className="max-sm:h-3 max-sm:w-3 h-8 w-8" />
-                    </div> */}
+
                 </div>
-                {/* Center */}
+
                 <div className="flex-[2] text-center max-sm:text-start  max-sm:px-3">
                     <Link to={'/'} ><h1 className="font-bold text-3xl max-sm:text-2xl">UrbanAura</h1></Link>
                 </div>
-                {/* Right */}
+
                 {
                     user === false ? <div className="max-sm:flex-[2]  flex-1 flex  max-sm:justify-end max-sm:space-x-1 justify-end items-center space-x-2 ">
                         <Link to={'/register'}>
-                            <div className="text-base cursor-pointer max-sm:text-xs max-sm:ml-2.5">REGISTER</div>
+                            <div className="text-base hover:border p-2 cursor-pointer max-sm:text-xs max-sm:ml-2.5 transition">REGISTER</div>
                         </Link>
                         <Link to={'/login'}>
-                            <div className="text-base cursor-pointer max-sm:text-xs max-sm:ml-2.5">SIGN IN</div>
+                            <div className="text-base hover:border p-2 cursor-pointer max-sm:text-xs max-sm:ml-2.5 transition">SIGN IN</div>
                         </Link>
 
 
