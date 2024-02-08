@@ -1,10 +1,10 @@
 # E-Commerce Website
 
-This is a customer-facing frontend repository for our e-commerce website! This web application serves as the storefront where customers can browse products, make purchases, and manage their accounts.
+This is a customer-facing frontend repository for UrbanAura e-commerce website! This web application serves as the storefront where customers can browse products, make purchases, and manage their accounts.
 
 ## Introduction
 
-Our e-commerce website provides a seamless shopping experience for customers, featuring a user-friendly interface, smooth animations, and robust functionality. From exploring product catalogs to securely checking out orders, this platform aims to deliver a delightful shopping experience.
+This e-commerce website provides a seamless shopping experience for customers, featuring a user-friendly interface, smooth animations, and robust functionality. From exploring product catalogs to securely checking out orders, this platform aims to deliver a delightful shopping experience.
 
 ## Technologies Used
 
@@ -17,7 +17,7 @@ Our e-commerce website provides a seamless shopping experience for customers, fe
 
 ## Setup
 
-To get started with our e-commerce website:
+To get started with the e-commerce website:
 
 1. **Clone the Repository**: Begin by cloning this repository to your local machine.
 
@@ -43,7 +43,7 @@ This e-commerce website offers the following key features:
 
 - **Payment Integration with Stripe**: Securely process online payments using the Stripe payment gateway.
 
-- **Responsive Design**: Our e-commerce website is designed to provide a consistent and intuitive experience across various devices and screen sizes.
+- **Responsive Design**: This e-commerce website is designed to provide a consistent and intuitive experience across various devices and screen sizes.
 
 ## Folder Structure
 
